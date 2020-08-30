@@ -8,7 +8,11 @@ import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.LinkedList;
+
 public class MainActivity extends AppCompatActivity {
+
+    private final LinkedList<Student> mStudentList = new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        for (int i = 0; i < 19; i++) {
+            mStudentList.addLast(new Student("John Doe", i, "MyCountry", "The Url"));
+        }
+
 
     }
 }
