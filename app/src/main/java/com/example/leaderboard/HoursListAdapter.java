@@ -17,7 +17,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class HoursListAdapter extends RecyclerView.Adapter<HoursListAdapter.ViewHolder> {
-    //private LinkedList<Student> mStudentLinkedList;
 
     private List<Student> mStudentList;
     private LayoutInflater mLayoutInflater;
