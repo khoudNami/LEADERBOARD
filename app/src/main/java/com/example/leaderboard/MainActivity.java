@@ -2,17 +2,22 @@ package com.example.leaderboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.lang.ref.PhantomReference;
 import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
 
     private final LinkedList<Student> mStudentList = new LinkedList<>();
+    private RecyclerView mRecyclerView;
+    private SkillIqListAdapter mSkillIqListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +65,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         for (int i = 0; i < 19; i++) {
-            mStudentList.addLast(new Student("John Doe", i, "MyCountry", "The Url"));
+            mStudentList.addLast(new Student("John Doe", "MyCountry", i, "The Url"));
         }
+
+        mRecyclerView = findViewById(R.id.recyclerView2);
+        mSkillIqListAdapter = new SkillIqListAdapter(this, mStudentList);
+        mRecyclerView.setAdapter(mSkillIqListAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
     }

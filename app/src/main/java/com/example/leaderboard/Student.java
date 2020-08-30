@@ -3,8 +3,16 @@ package com.example.leaderboard;
 public class Student {
     private String name;
     private int hours;
+    private int score;
     private String country;
     private String badgeUrl;
+
+    public Student(String name, String country, int score, String badgeUrl) {
+        this.name = name;
+        this.score = score;
+        this.country = country;
+        this.badgeUrl = badgeUrl;
+    }
 
     public Student(String name, int hours, String country, String badgeUrl) {
         this.name = name;
@@ -12,6 +20,15 @@ public class Student {
         this.country = country;
         this.badgeUrl = badgeUrl;
     }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
 
     public String getName() {
         return name;
