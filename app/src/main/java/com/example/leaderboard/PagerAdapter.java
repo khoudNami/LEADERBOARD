@@ -25,12 +25,10 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new TabFragment1();
+                return new HoursFragment();
             case 1:
-                return new TabFragment2();
-            case 2:
-                return new TabFragment3();
-            default:
+                return new ScoresFragment();
+                     default:
                 return null;
         }
     }

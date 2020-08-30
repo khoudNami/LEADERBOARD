@@ -6,59 +6,36 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.LinkedList;
 
 
-public class TabFragment1 extends Fragment {
+public class HoursFragment extends Fragment {
+
+    private final LinkedList<Student> mStudentList = new LinkedList<>();
+    private RecyclerView mRecyclerView;
+    private HoursListAdapter mHoursListAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab1, container, false);
+        View view = inflater.inflate(R.layout.fragment_hours_tab, container, false);
+
+        for (int i = 0; i < 19; i++) {
+            mStudentList.addLast(new Student("John Doe", i, "MyCountry", "The Url"));
+        }
+
+        mRecyclerView = view.findViewById(R.id.recyclerView1);
+        mHoursListAdapter = new HoursListAdapter(view.getContext(), mStudentList);
+        mRecyclerView.setAdapter(mHoursListAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+        return view;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //

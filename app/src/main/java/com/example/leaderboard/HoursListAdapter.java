@@ -12,29 +12,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.LinkedList;
 
-public class SkillIqListAdapter extends RecyclerView.Adapter<SkillIqListAdapter.SkillIqViewHolder> {
+public class HoursListAdapter extends RecyclerView.Adapter<HoursListAdapter.ViewHolder> {
     private LinkedList<Student> mStudentLinkedList;
     private LayoutInflater mLayoutInflater;
 
-    public SkillIqListAdapter(Context context, LinkedList<Student> studentLinkedList) {
+    public HoursListAdapter(Context context, LinkedList<Student> studentLinkedList) {
         mStudentLinkedList = studentLinkedList;
-        mLayoutInflater =  LayoutInflater.from(context);
+        mLayoutInflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
-    public SkillIqListAdapter.SkillIqViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = mLayoutInflater.inflate(R.layout.learner_item,parent,false);
-        return new SkillIqViewHolder(itemView);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = mLayoutInflater.inflate(R.layout.learner_item, parent, false);
+        return new HoursListAdapter.ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SkillIqListAdapter.SkillIqViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Student currentStudent = mStudentLinkedList.get(position);
         holder.mTextName.setText(currentStudent.getName());
-        holder.mTextDetails.setText(currentStudent.getScore()+" skill IQ Score, "+currentStudent.getCountry());
+        holder.mTextDetails.setText(currentStudent.getHours() + " learning hours, " + currentStudent.getCountry());
         //holder.mBadgeImageView.setImageResource();
-
     }
 
     @Override
@@ -42,12 +41,13 @@ public class SkillIqListAdapter extends RecyclerView.Adapter<SkillIqListAdapter.
         return mStudentLinkedList.size();
     }
 
-    public class SkillIqViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
         public final TextView mTextName;
         public final TextView mTextDetails;
         public final ImageView mBadgeImageView;
 
-        public SkillIqViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             mTextName = itemView.findViewById(R.id.text_name);
             mTextDetails = itemView.findViewById(R.id.text_details);

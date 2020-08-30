@@ -15,10 +15,6 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final LinkedList<Student> mStudentList = new LinkedList<>();
-    private RecyclerView mRecyclerView;
-    private SkillIqListAdapter mSkillIqListAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label1));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label2));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label3));
 
         // Set the tabs to fill the entire layout.
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -64,14 +59,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        for (int i = 0; i < 19; i++) {
-            mStudentList.addLast(new Student("John Doe", "MyCountry", i, "The Url"));
-        }
 
-        mRecyclerView = findViewById(R.id.recyclerView2);
-        mSkillIqListAdapter = new SkillIqListAdapter(this, mStudentList);
-        mRecyclerView.setAdapter(mSkillIqListAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
     }
