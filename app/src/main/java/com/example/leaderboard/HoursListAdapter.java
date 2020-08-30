@@ -10,14 +10,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.jakewharton.picasso.OkHttp3Downloader;
+import com.squareup.picasso.Picasso;
+
 import java.util.LinkedList;
+import java.util.List;
 
 public class HoursListAdapter extends RecyclerView.Adapter<HoursListAdapter.ViewHolder> {
-    private LinkedList<Student> mStudentLinkedList;
-    private LayoutInflater mLayoutInflater;
+    //private LinkedList<Student> mStudentLinkedList;
 
-    public HoursListAdapter(Context context, LinkedList<Student> studentLinkedList) {
-        mStudentLinkedList = studentLinkedList;
+    private List<Student> mStudentList;
+    private LayoutInflater mLayoutInflater;
+    Context mContext;
+
+    public HoursListAdapter(Context context, List<Student> studentList) {
+        mStudentList = studentList;
+        mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
     }
 
@@ -30,15 +38,22 @@ public class HoursListAdapter extends RecyclerView.Adapter<HoursListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Student currentStudent = mStudentLinkedList.get(position);
+        Student currentStudent = mStudentList.get(position);
+
+        Picasso.Builder builder = new Picasso.Builder(mContext);
+        builder.downloader(new OkHttp3Downloader(mContext));
+        builder.build().load(currentStudent.getBadgeUrl())
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_launcher_foreground)
+                .into(holder.mBadgeImageView);
+
         holder.mTextName.setText(currentStudent.getName());
         holder.mTextDetails.setText(currentStudent.getHours() + " learning hours, " + currentStudent.getCountry());
-        //holder.mBadgeImageView.setImageResource();
     }
 
     @Override
     public int getItemCount() {
-        return mStudentLinkedList.size();
+        return mStudentList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

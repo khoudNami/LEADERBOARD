@@ -1,10 +1,22 @@
 package com.example.leaderboard;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Student {
+
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("hours")
     private int hours;
+
+    @SerializedName("score")
     private int score;
+
+    @SerializedName("country")
     private String country;
+
+    @SerializedName("badgeUrl")
     private String badgeUrl;
 
     public Student(String name, String country, int score, String badgeUrl) {
