@@ -2,8 +2,6 @@ package com.example.leaderboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -13,9 +11,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.tabs.TabLayout;
-
-import java.lang.ref.PhantomReference;
-import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ProjectSubmisson.class);
+                Intent intent = new Intent(MainActivity.this, ProjectSubmission.class);
                 startActivity(intent);
             }
         });

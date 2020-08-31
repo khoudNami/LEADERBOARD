@@ -1,7 +1,6 @@
 package com.example.leaderboard;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ButtonBarLayout;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
@@ -15,7 +14,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProjectSubmisson extends AppCompatActivity {
+public class ProjectSubmission extends AppCompatActivity {
 
     TextView txtName;
     TextView txtLastName;
@@ -50,18 +49,22 @@ public class ProjectSubmisson extends AppCompatActivity {
                 String projectLink = txtProjectLink.getText().toString();
 
 
-                service.submitProject(name,lastName,emailAddress,projectLink).enqueue(new Callback<ResponseBody>() {
+                service.submitProject(name, lastName, emailAddress, projectLink).enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        Toast.makeText(ProjectSubmisson.this, "post submitted to API." + response.code(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProjectSubmission.this,
+                                "Project submitted to API. Was it successful? " + response.isSuccessful() +
+                                        " Status Code " + response.code() +
+                                        " Message " + response.message(),
+                                Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Toast.makeText(ProjectSubmisson.this, "Unable to submit post to API.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProjectSubmission.this, "Unable to submit post to API.", Toast.LENGTH_LONG).show();
                     }
                 });
-                                            }
+            }
         });
     }
 }
