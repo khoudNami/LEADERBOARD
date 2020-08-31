@@ -7,24 +7,61 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ProjectSubmisson extends AppCompatActivity {
+
+    TextView txtName;
+    TextView txtLastName;
+    TextView txtEmailAddress;
+    TextView txtProjectLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_submisson);
 
+        txtName = findViewById(R.id.editTextName);
+        txtLastName = findViewById(R.id.editTextLastName);
+        txtEmailAddress = findViewById(R.id.editTextEmailAddress);
+        txtProjectLink = findViewById(R.id.editTextProjectLink);
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        final SendDataService service = RetrofitPostingClientInstance.getRetrofitInstance().create(SendDataService.class);
+
 
         Button submitProjectBtn = findViewById(R.id.submit_project_button);
         submitProjectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ProjectSubmisson.this, "Project Submitted", Toast.LENGTH_SHORT).show();
-            }
+
+                String name = txtName.getText().toString();
+                String lastName = txtLastName.getText().toString();
+                String emailAddress = txtEmailAddress.getText().toString();
+                String projectLink = txtProjectLink.getText().toString();
+
+
+                service.submitProject(name,lastName,emailAddress,projectLink).enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        Toast.makeText(ProjectSubmisson.this, "post submitted to API." + response.code(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Toast.makeText(ProjectSubmisson.this, "Unable to submit post to API.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                                            }
         });
     }
 }
