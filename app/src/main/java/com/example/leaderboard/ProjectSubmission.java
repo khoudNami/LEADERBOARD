@@ -20,6 +20,8 @@ public class ProjectSubmission extends AppCompatActivity {
     TextView txtLastName;
     TextView txtEmailAddress;
     TextView txtProjectLink;
+    TextView txtResults;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class ProjectSubmission extends AppCompatActivity {
         txtLastName = findViewById(R.id.editTextLastName);
         txtEmailAddress = findViewById(R.id.editTextEmailAddress);
         txtProjectLink = findViewById(R.id.editTextProjectLink);
+        txtResults = findViewById(R.id.textViewResults);
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -52,11 +55,11 @@ public class ProjectSubmission extends AppCompatActivity {
                 service.submitProject(name, lastName, emailAddress, projectLink).enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        Toast.makeText(ProjectSubmission.this,
-                                "Project submitted to API. Was it successful? " + response.isSuccessful() +
-                                        " Status Code " + response.code() +
-                                        " Message " + response.message(),
-                                Toast.LENGTH_SHORT).show();
+                        String results = "Project submitted to API."+" Was it successful? " + response.isSuccessful()
+                                + ". Status Code " + response.code()
+                                + ". Message " + response.message();
+                        txtResults.setText(results);
+
                     }
 
                     @Override
