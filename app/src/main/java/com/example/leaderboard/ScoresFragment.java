@@ -1,5 +1,6 @@
 package com.example.leaderboard;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,9 +22,14 @@ public class ScoresFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private ScoresListAdapter mScoresListAdapter;
+    private ProgressDialog mProgressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        mProgressDialog = new ProgressDialog(getActivity());
+        mProgressDialog.setMessage("Loading....");
+        mProgressDialog.show();
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_scores_tab, container, false);
 
@@ -32,6 +38,7 @@ public class ScoresFragment extends Fragment {
         call.enqueue(new Callback<List<Student>>() {
             @Override
             public void onResponse(Call<List<Student>> call, Response<List<Student>> response) {
+                mProgressDialog.dismiss();
                 mRecyclerView = view.findViewById(R.id.recyclerView2);
                 mScoresListAdapter = new ScoresListAdapter(view.getContext(), response.body());
                 mRecyclerView.setAdapter(mScoresListAdapter);
@@ -40,6 +47,7 @@ public class ScoresFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Student>> call, Throwable t) {
+                mProgressDialog.dismiss();
                 Toast.makeText(view.getContext(), "Something went wrong with getting the scores ", Toast.LENGTH_SHORT).show();
             }
         });

@@ -3,6 +3,7 @@ package com.example.leaderboard;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +22,7 @@ public class ProjectSubmission extends AppCompatActivity {
     TextView txtEmailAddress;
     TextView txtProjectLink;
     TextView txtResults;
-
+    ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class ProjectSubmission extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final SendDataService service = RetrofitPostingClientInstance.getRetrofitInstance().create(SendDataService.class);
 
@@ -45,6 +47,10 @@ public class ProjectSubmission extends AppCompatActivity {
         submitProjectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mProgressDialog = new ProgressDialog(ProjectSubmission.this);
+                mProgressDialog.setMessage("Loading....");
+                mProgressDialog.show();
 
                 String name = txtName.getText().toString();
                 String lastName = txtLastName.getText().toString();
@@ -55,7 +61,8 @@ public class ProjectSubmission extends AppCompatActivity {
                 service.submitProject(name, lastName, emailAddress, projectLink).enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        String results = "Project submitted to API."+" Was it successful? " + response.isSuccessful()
+                        mProgressDialog.dismiss();
+                        String results = "Project submitted to API." + " Was it successful? " + response.isSuccessful()
                                 + ". Status Code " + response.code()
                                 + ". Message " + response.message();
                         txtResults.setText(results);
@@ -64,6 +71,7 @@ public class ProjectSubmission extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        mProgressDialog.dismiss();
                         Toast.makeText(ProjectSubmission.this, "Unable to submit post to API.", Toast.LENGTH_LONG).show();
                     }
                 });
