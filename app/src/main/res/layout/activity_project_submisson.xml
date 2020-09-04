@@ -4,35 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/launch2"
     tools:context=".ProjectSubmission">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/submit_project_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="First Name"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        android:background="@drawable/button_shape"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="@+id/editTextProjectLink"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/editTextProjectLink"
+        app:layout_constraintTop_toBottomOf="@+id/editTextProjectLink" />
 
     <EditText
         android:id="@+id/editTextLastName"
@@ -40,8 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:background="@drawable/edit_text_shape"
         android:ems="10"
-        android:hint="Last Name"
+        android:hint="   Last Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -53,8 +39,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:background="@drawable/edit_text_shape"
         android:ems="10"
-        android:hint="Email Address"
+        android:hint="   Email Address"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="@+id/editTextLastName"
         app:layout_constraintHorizontal_bias="0.0"
@@ -66,34 +53,55 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:background="@drawable/edit_text_shape"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Project on GITHUB (link)"
+        android:hint="   Project on GITHUB (link)"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="@+id/editTextEmailAddress"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/editTextEmailAddress"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress" />
 
-    <Button
-        android:id="@+id/submit_project_button"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="32dp"
-        android:text="Submit"
-        app:layout_constraintEnd_toEndOf="@+id/editTextProjectLink"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/editTextProjectLink"
-        app:layout_constraintTop_toBottomOf="@+id/editTextProjectLink" />
+        android:background="@drawable/edit_text_shape"
+        android:ems="10"
+        android:hint="    First Name"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
         android:id="@+id/textViewResults"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="120dp"
+        android:background="@color/colorAccent"
         android:hint="Results"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/gads_header"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    </androidx.appcompat.widget.Toolbar>
 </androidx.constraintlayout.widget.ConstraintLayout>

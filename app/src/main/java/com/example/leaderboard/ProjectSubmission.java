@@ -39,6 +39,7 @@ public class ProjectSubmission extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         final SendDataService service = RetrofitPostingClientInstance.getRetrofitInstance().create(SendDataService.class);
 
