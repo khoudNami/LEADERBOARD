@@ -22,13 +22,13 @@ in the Skill IQ Leaders’ category.
   - Working with Google Forms and many more...
 
 # Tools
-  - Android Studio
+  - [Android Studio]
   - Retrofit2
   - Picasso
   - Base Url : https://gadsapi.herokuapp.com
   - Learning Leaders End Point : /api/hours 
   - Skill IQ Leaders End Point : /api/skilliq
-  - Json viewer : https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?utm_source=chrome-ntp-icon%E2%80%A9
+  - Json viewer : 
   
 # Planned Enhancements:
   - Allow sorting of list
@@ -37,7 +37,7 @@ in the Skill IQ Leaders’ category.
   - Use Clean Architecture
 
 [//]: #
-     [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [john gruber]: <http://daringfireball.net>
-   [df1]: <http://daringfireball.net/projects/markdown/>
+     [retrofit]: <https://square.github.io/retrofit/>
+   [android studio]: <https://developer.android.com/studio>
+   [json viewer]: <https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?utm_source=chrome-ntp-icon%E2%80%A9>
+   [picasso]: <https://square.github.io/picasso/>
