@@ -8,6 +8,8 @@ I implement a mobile design of the GADS 2020 Leaderboard.
 The mobile App will display Top 20 learners in the Learning Leaders’ category and Top 20 learners
 in the Skill IQ Leaders’ category.
 
+![Alt Text](https://github.com/khoudNami/LEADERBOARD/blob/master/project.gif)
+
 # Functional Requirements
 - Retrieve two lists from Rest API and display them in Tablayout, 2 Tabs
 - Post infomation entered by user to  a Rest API
