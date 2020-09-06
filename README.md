@@ -35,3 +35,8 @@ in the Skill IQ Leaders’ category.
   - Add search functionality
   - Implement a caching strategy
   - Use Clean Architecture
+  
+     [dill]: <https://github.com/joemccann/dillinger>
+   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
+   [john gruber]: <http://daringfireball.net>
+   [df1]: <http://daringfireball.net/projects/markdown/>
