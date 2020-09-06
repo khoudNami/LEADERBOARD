@@ -23,12 +23,12 @@ in the Skill IQ Leaders’ category.
 
 # Tools
   - [Android Studio]
-  - Retrofit2
-  - Picasso
+  - [Retrofit2]
+  - [Picasso]
   - Base Url : https://gadsapi.herokuapp.com
   - Learning Leaders End Point : /api/hours 
   - Skill IQ Leaders End Point : /api/skilliq
-  - Json viewer : 
+  - [Json viewer]
   
 # Planned Enhancements:
   - Allow sorting of list
@@ -37,7 +37,7 @@ in the Skill IQ Leaders’ category.
   - Use Clean Architecture
 
 [//]: #
-     [retrofit]: <https://square.github.io/retrofit/>
+     [retrofit2]: <https://square.github.io/retrofit/>
    [android studio]: <https://developer.android.com/studio>
    [json viewer]: <https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?utm_source=chrome-ntp-icon%E2%80%A9>
    [picasso]: <https://square.github.io/picasso/>
